@@ -1,5 +1,12 @@
 package org.dvigal.lesson.spring_1;
 
-public class StockPriceModel {
+import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
+@Accessors(chain = true)
+@Data
+public class StockPriceModel {
+    @ToString.Exclude
+    private Object value;
 }

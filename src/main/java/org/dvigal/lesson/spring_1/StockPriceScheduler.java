@@ -4,32 +4,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
 @RequiredArgsConstructor
 public class StockPriceScheduler implements DisposableBean, InitializingBean {
-    private final ExecutorService executorService;
+    private final ScheduledExecutorService executorService;
     private final StockPriceLoader loader;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        executorService.submit(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                var time = LocalDateTime.now();
-                try {
-                    System.out.println("Load stock price");
-                    loader.load(time.toLocalDate());
-                    var nextTick = time.plusDays(1);
-                    System.out.println("Next loading time " + nextTick);
-                    Thread.sleep(TimeUnit.DAYS.toMillis(1));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        executorService.scheduleAtFixedRate(() -> {
+            System.out.println("Start loading");
+            loader.load(LocalDate.now().minusDays(1)).forEach(price -> System.out.println(price));
+            System.out.println("End loading");
+        }, 0, 1, TimeUnit.DAYS);
     }
 
     @Override

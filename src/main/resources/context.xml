@@ -8,12 +8,15 @@
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 
     <bean id = "moexExchangeStockPriceLoader" class = "org.dvigal.lesson.spring_1.MoexExchangeStockPriceLoader">
+        <constructor-arg value="asdfsdf" />
         <constructor-arg ref="restTemplate" />
     </bean>
 
-    <bean id="stockPriceScheduler" class="org.dvigal.lesson.spring_1.StockPriceScheduler">
+    <bean id="stockPriceScheduler" class="org.dvigal.lesson.spring_1.StockPriceScheduler" >
         <constructor-arg>
-            <bean factory-method="newSingleThreadExecutor" class="java.util.concurrent.Executors"/>
+            <bean factory-method="newScheduledThreadPool" class="java.util.concurrent.Executors">
+                <constructor-arg value="1" />
+            </bean>
         </constructor-arg>
         <constructor-arg ref="moexExchangeStockPriceLoader" />
     </bean>

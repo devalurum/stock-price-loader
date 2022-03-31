@@ -1,3 +1,7 @@
 spring:
   application:
     name: stock-price-loader-service
+
+
+app-config:
+  moex-price-load-url: sfasdfasdf
