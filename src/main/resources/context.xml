@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+
+    <bean id = "moexExchangeStockPriceLoader" class = "org.dvigal.lesson.spring_1.MoexExchangeStockPriceLoader">
+        <constructor-arg ref="restTemplate" />
+    </bean>
+
+    <bean id="stockPriceScheduler" class="org.dvigal.lesson.spring_1.StockPriceScheduler">
+        <constructor-arg>
+            <bean factory-method="newSingleThreadExecutor" class="java.util.concurrent.Executors"/>
+        </constructor-arg>
+        <constructor-arg ref="moexExchangeStockPriceLoader" />
+    </bean>
+
+</beans>
