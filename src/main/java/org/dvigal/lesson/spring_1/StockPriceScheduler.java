@@ -1,12 +1,11 @@
 package org.dvigal.lesson.spring_1;
 
 import lombok.RequiredArgsConstructor;
+import org.dvigal.lesson.spring_2.price_loader.StockPriceLoader;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 

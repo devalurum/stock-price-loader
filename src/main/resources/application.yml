@@ -1,7 +1,32 @@
+server:
+  port: 8080
+  
 spring:
   application:
     name: stock-price-loader-service
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
 
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
 
 app-config:
-  moex-price-load-url: sfasdfasdf
+  moex:
+    stock-price-url: https://iss.moex.com/iss/history/engines/stock/markets/shares/securities.json
+  scheduler:
+    stock-price:
+      rate: PT5S

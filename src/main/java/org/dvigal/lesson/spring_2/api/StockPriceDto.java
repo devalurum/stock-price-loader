@@ -1,4 +1,4 @@
-package org.dvigal.lesson.spring_1;
+package org.dvigal.lesson.spring_2.api;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -8,12 +8,11 @@ import java.time.LocalDate;
 
 @Accessors(chain = true)
 @Data
-public class StockPriceModel {
-    private Long id;
-    private BigDecimal low;
-    private BigDecimal high;
-    private BigDecimal open;
-    private BigDecimal close;
+public class StockPriceDto {
     private LocalDate date;
     private String ticker;
+    private BigDecimal open;
+    private BigDecimal close;
+    private BigDecimal low;
+    private BigDecimal high;
 }

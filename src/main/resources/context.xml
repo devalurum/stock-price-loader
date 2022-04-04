@@ -7,7 +7,7 @@
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 
-    <bean id = "moexExchangeStockPriceLoader" class = "org.dvigal.lesson.spring_1.MoexExchangeStockPriceLoader">
+    <bean id = "moexExchangeStockPriceLoader" class = "org.dvigal.lesson.spring_2.price_loader.MoexExchangeStockPriceLoader">
         <constructor-arg value="asdfsdf" />
         <constructor-arg ref="restTemplate" />
     </bean>
