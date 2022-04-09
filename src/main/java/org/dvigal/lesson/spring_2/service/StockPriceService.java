@@ -2,7 +2,7 @@ package org.dvigal.lesson.spring_2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.dvigal.lesson.spring_2.domain.StockPriceModel;
-import org.dvigal.lesson.spring_2.persistent.StockPriceRepository;
+import org.dvigal.lesson.spring_2.repository.StockPriceRepository;
 import org.dvigal.lesson.spring_2.price_loader.StockPriceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

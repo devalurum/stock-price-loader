@@ -5,13 +5,19 @@ spring:
   application:
     name: stock-price-loader-service
   datasource:
-    url: jdbc:h2:mem:mydb
+#    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:./db;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=FALSE;DB_CLOSE_DELAY=-1;
     username: sa
     password: password
     driverClassName: org.h2.Driver
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+    hibernate:
+      ddl-auto: create-drop
+#      ddl-auto: none
+    show-sql: true
+
 
 
 management:
@@ -29,4 +35,4 @@ app-config:
     stock-price-url: https://iss.moex.com/iss/history/engines/stock/markets/shares/securities.json
   scheduler:
     stock-price:
-      rate: PT5S
+      rate: PT5M

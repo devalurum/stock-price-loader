@@ -6,7 +6,9 @@ import org.dvigal.lesson.spring_2.domain.StockPriceModel;
 import org.dvigal.lesson.spring_2.service.StockPriceService;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -30,5 +32,21 @@ public class StockPriceFacade {
                 .setOpen(model.getOpen())
                 .setHigh(model.getHigh())
                 .setLow(model.getLow());
+    }
+
+    public void deleteAll() {
+        throw new RuntimeException();
+    }
+
+    public StockPriceDto save(StockPriceDto model) {
+        return new StockPriceDto();
+    }
+
+    public StockPriceDto get(String invValue) {
+        throw new EntityNotFoundException();
+    }
+
+    public Optional<StockPriceDto> findById(String intValue) {
+        return Optional.empty();
     }
 }

@@ -1,13 +1,15 @@
 package org.dvigal.lesson.spring_2.api;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Accessors(chain = true)
-@Data
+@Getter
+@Setter
 public class StockPriceDto {
     private LocalDate date;
     private String ticker;
