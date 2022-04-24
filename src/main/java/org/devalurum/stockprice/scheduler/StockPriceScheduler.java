@@ -1,4 +1,4 @@
-package org.devalurum.stockprice;
+package org.devalurum.stockprice.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,12 +7,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 
-@Slf4j
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class StockPriceScheduler {
-    private final StockPriceService stockPriceService;
 
+    private final StockPriceService stockPriceService;
 
     @Scheduled(fixedRateString = "${app-config.scheduler.stock-price.rate:1000}")
     public void afterPropertiesSet() {
