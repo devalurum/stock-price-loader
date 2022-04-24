@@ -1,0 +1,73 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'org.devalurum'
+version = '1.0'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+ext {
+    javaxValidVersion = "2.0.1.Final"
+    jaxbApiVersion = "2.4.0-b180830.0359"
+    javaxPersistenceVersion = "2.2"
+
+    micrometrPrometheusVersion = "1.8.4"
+    adminStarterVersion = "2.6.6"
+    adminStarterUIVersion = "1.5.7"
+
+    hibernateValidatorVersion = '6.0.16.Final'
+    lombokVersion = "1.18.22"
+    fingBugsVersion = "3.0.2"
+    h2Version = "2.1.210"
+    openfeignVersion = "3.1.1"
+
+    mockitoVersion = "4.4.0"
+    hamcrestVersion = "2.2"
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:$openfeignVersion"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation "javax.xml.bind:jaxb-api:$jaxbApiVersion"
+
+    implementation "de.codecentric:spring-boot-admin-starter-server:$adminStarterVersion"
+    implementation "de.codecentric:spring-boot-admin-starter-client:$adminStarterVersion"
+    implementation "de.codecentric:spring-boot-admin-server-ui-login:$adminStarterUIVersion"
+    implementation "org.postgresql:postgresql"
+
+    implementation "javax.validation:validation-api:$javaxValidVersion"
+
+    implementation "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+    implementation "io.micrometer:micrometer-registry-prometheus:$micrometrPrometheusVersion"
+
+    compileOnly "com.google.code.findbugs:jsr305:$fingBugsVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+    testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
+    testImplementation "com.h2database:h2:$h2Version"
+
+}
+
+test {
+    useJUnitPlatform()
+}
