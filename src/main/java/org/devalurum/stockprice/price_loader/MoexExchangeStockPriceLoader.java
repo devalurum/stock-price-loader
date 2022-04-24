@@ -5,15 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.devalurum.stockprice.api.response.History;
 import org.devalurum.stockprice.client.MoscowExchangeClient;
 import org.devalurum.stockprice.domain.StockPriceModel;
-import org.devalurum.stockprice.settings.MoexSettings;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

@@ -18,8 +18,6 @@ spring:
 #      ddl-auto: none
     show-sql: true
 
-
-
 management:
   endpoints:
     web:
@@ -32,7 +30,7 @@ management:
 
 app-config:
   moex:
-    stock-price-url: https://iss.moex.com/iss/history/engines/stock/markets/shares/securities.json
+    stock-price-url: https://iss.moex.com/iss/history/engines/stock/markets/shares
   scheduler:
     stock-price:
       rate: PT5M
