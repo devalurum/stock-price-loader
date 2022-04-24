@@ -58,6 +58,8 @@ dependencies {
     implementation "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
     implementation "io.micrometer:micrometer-registry-prometheus:$micrometrPrometheusVersion"
 
+    implementation "com.h2database:h2:$h2Version"
+
     compileOnly "com.google.code.findbugs:jsr305:$fingBugsVersion"
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
