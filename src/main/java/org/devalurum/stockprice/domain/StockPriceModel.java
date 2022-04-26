@@ -1,8 +1,6 @@
 package org.devalurum.stockprice.domain;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -11,10 +9,9 @@ import java.time.LocalDate;
 
 
 @Accessors(chain = true)
-@Getter
-@Setter
 @Data
 @Entity
+@Table(name = "stock_price_model")
 public class StockPriceModel {
 
     @Id
