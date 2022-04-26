@@ -6,6 +6,7 @@ import org.devalurum.stockprice.api.ExchangeDto;
 import org.devalurum.stockprice.api.StockPriceDto;
 import org.devalurum.stockprice.domain.ExchangeModel;
 import org.devalurum.stockprice.domain.StockPriceModel;
+import org.devalurum.stockprice.exception.NotFoundExchange;
 import org.devalurum.stockprice.service.ExchangeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -70,10 +71,5 @@ public class ExchangeController {
     @ExceptionHandler(NotFoundExchange.class)
     public void handleException(NotFoundExchange ex) {
         log.error("An error exception occurred", ex);
-    }
-
-    @RequiredArgsConstructor
-    static class NotFoundExchange extends RuntimeException {
-        private final long id;
     }
 }
