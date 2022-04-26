@@ -18,4 +18,9 @@ public interface MoscowExchangeClient {
     StockPriceResponse getStockPrices(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                       @RequestParam int start);
 
+    @GetMapping(value = "/securities.json",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            params = {"date"})
+    StockPriceResponse getStockPrices(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date);
+
 }
