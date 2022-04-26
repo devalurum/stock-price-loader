@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: none # replace after first run on "none" or "update"
+    show-sql: false
+    generate-ddl: false
+
+management:
+  endpoint:
+    logfile:
+      enabled: true
+      external-file: src/main/resources/logs/logfile.log
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,loggers,logfile
+  metrics:
+    export:
+      prometheus:
+        enabled: true
