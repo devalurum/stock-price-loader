@@ -8,6 +8,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    networks:
+      monitoring:
+        aliases:
+          - postgres
     volumes:
 # put in explore Win10 \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\
       - ./data:/var/lib/postgresql/data
@@ -29,6 +33,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
+    networks:
+      monitoring:
+        aliases:
+          - pgadmin
 
   prometheus:
     image: prom/prometheus:latest
