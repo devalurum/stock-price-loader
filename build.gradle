@@ -6,8 +6,8 @@ plugins {
 
 group = 'org.devalurum'
 version = '1.0'
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 ext {
     javaxValidVersion = "2.0.1.Final"
@@ -68,6 +68,11 @@ dependencies {
     testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
     testImplementation "com.h2database:h2:$h2Version"
 
+}
+
+tasks.named("bootJar") {
+    mainClass = 'org.devalurum.stockprice.StockPriceLoaderService'
+    archiveName = "$baseName.$extension"
 }
 
 test {
